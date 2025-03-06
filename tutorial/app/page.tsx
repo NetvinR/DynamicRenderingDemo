@@ -35,8 +35,12 @@ export default function Home() {
       <h1>Current Weather</h1>
       {weatherData ? (
         <div>
-          <p>Temperature: {weatherData.hourly.temperature_2m[0]}°C</p>
-          <p>Time: {weatherData.hourly.time[0]}</p>
+          {weatherData.hourly.time.map((time, index) => (
+            <div key={index}>
+              <p>Time: {time}</p>
+              <p>Temperature: {weatherData.hourly.temperature_2m[index]}°C</p>
+            </div>
+          ))}
         </div>
       ) : (
         <p>Loading...</p>
